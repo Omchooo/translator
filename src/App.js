@@ -36,7 +36,13 @@ function App() {
       fetch("https://translo.p.rapidapi.com/api/v3/translate", options)
         .then((response) => response.json())
         .then((data) => {
-          document.getElementById("output").innerText = data.translated_text;
+          if(data.ok === false){
+            document.getElementById("output").innerText = "Error: " + data.error;
+          }
+          else{
+
+            document.getElementById("output").innerText = data.translated_text;
+          }
         })
         .catch((err) => console.error(err));
 
