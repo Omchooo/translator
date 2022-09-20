@@ -27,8 +27,7 @@ function App() {
   };
 
   const translate = () => {
-    document.getElementById("output").innerText =
-      "Prevođenje, molimo pričekajte..";
+    document.getElementById("output").innerText = "Translating, please wait..";
     const interval = setInterval(() => {
       const inp = document.getElementById("input-txt").value;
       encodedParams.append("text", inp);
@@ -36,11 +35,10 @@ function App() {
       fetch("https://translo.p.rapidapi.com/api/v3/translate", options)
         .then((response) => response.json())
         .then((data) => {
-          if(data.ok === false){
-            document.getElementById("output").innerText = "Error: " + data.error;
-          }
-          else{
-
+          if (data.ok === false) {
+            document.getElementById("output").innerText =
+              "Error: " + data.error;
+          } else {
             document.getElementById("output").innerText = data.translated_text;
           }
         })
@@ -50,7 +48,7 @@ function App() {
 
       clearInterval(interval);
     }, 2000);
-  };
+  }
 
   return (
     <div className="main-pad layout">
@@ -59,7 +57,7 @@ function App() {
           <div className="center-line"></div>
           <div className="up-content layout">
             <div className="underline layout">
-              Odabrani jezik:
+              From:
               <div className="btn-group btn-h-38">
                 <button
                   className="btn btn-secondary dropdown-toggle"
@@ -69,21 +67,23 @@ function App() {
                   data-bs-auto-close="true"
                   aria-expanded="false"
                 >
-                  Odaberite jezik
+                  Choose language
                 </button>
 
                 <ul className="dropdown-menu">
                   {languages.map((language, index) => (
-                    <li>
-                      <button
-                        className="dropdown-item"
-                        type="button"
-                        onClick={() => inputClick(language.code, language.name)}
-                        key={index}
-                      >
-                        {language.name}
-                      </button>
-                    </li>
+                      <li>
+                        <button
+                          className="dropdown-item"
+                          type="button"
+                          onClick={() =>
+                            inputClick(language.code, language.name)
+                          }
+                          key={index}
+                        >
+                          {language.name}
+                        </button>
+                      </li>
                   ))}
                 </ul>
               </div>
@@ -95,7 +95,7 @@ function App() {
               <textarea
                 type="text"
                 id="input-txt"
-                placeholder="Unesite vaš tekst ovdje..."
+                placeholder="Enter your text here..."
                 onChange={() => translate()}
               />
             </div>
@@ -105,7 +105,7 @@ function App() {
         <div className="right">
           <div className="up-content layout">
             <div className="underline layout">
-              Odabrani jezik:
+              To:
               <div className="btn-group btn-h-38">
                 <button
                   className="btn btn-secondary dropdown-toggle"
@@ -115,7 +115,7 @@ function App() {
                   data-bs-auto-close="true"
                   aria-expanded="false"
                 >
-                  Odaberite jezik
+                  Choose language
                 </button>
                 <ul className="dropdown-menu">
                   {languages.map((language, index) => (
