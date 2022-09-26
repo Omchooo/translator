@@ -40,7 +40,7 @@ body {
 }
 
 .main-pad {
-  padding: 80px 0 50px 0;
+  padding: 40px 0 50px 0;
   width: 100%;
   justify-content: center;
 }
@@ -177,7 +177,6 @@ body {
 }
 
 .c-btn {
-  
   position: absolute;
   bottom: -45px;
 }
@@ -187,7 +186,7 @@ body {
     flex-basis: 508px;
     flex-direction: column;
   }
-  
+
   .center-line::before {
     bottom: 0;
     height: 1px;
@@ -209,7 +208,7 @@ body {
   }
 
   .main-pad {
-    padding: 5px 0 5px 0;
+    padding: 25px 0 20px 0;
   }
 
   .s-btn {
@@ -217,25 +216,40 @@ body {
     right: 15px;
     bottom: -15px;
   }
+
+  .c-btn {
+    display: none;
+  }
 }
 
-
-@media (max-width:510px) {
+@media (max-width: 510px) {
   .main {
     flex-basis: 380px;
     flex-direction: column;
   }
 
-  .left {
-    width: 380px;
+  .main-pad {
+    padding: 5px 0 5px 0;
   }
-  
+
+  .left {
+    width: 360px;
+  }
+
   .right {
-    width: 380px;
+    width: 360px;
   }
 
   .center-line::before {
     width: 65%;
     right: 70px;
+  }
+
+  .input-txt {
+    height: 70%;
+  }
+
+  .down-content {
+    height: 260px;
   }
 }

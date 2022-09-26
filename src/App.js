@@ -91,7 +91,6 @@ function App() {
 
   const clip = () => {
     const copyText = document.getElementById("output").innerText;
-    copyText.select();
     navigator.clipboard.writeText(copyText);
   };
 
